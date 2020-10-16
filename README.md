@@ -35,6 +35,10 @@ python -m and_mask.run_cifar \
         --output_dir /tmp/
 ```
 
+### A simple linear regression example
+
+See the notebook folder.
+
 #### BibTeX
 
 ```

@@ -35,7 +35,7 @@ python -m and_mask.run_cifar \
         --output_dir /tmp/
 ```
 
-#### Bibtex
+#### BibTeX
 
 ```
 @misc{parascandolo2020learning,

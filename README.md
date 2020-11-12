@@ -4,7 +4,7 @@ This repo contains the code to implement the methods from the paper _Learning ex
 #### Interested in trying it on a new dataset?
 In our experience, here are the very important hyperparameters to tune, that we would include in a wide hyperparameter search:
 
-- **higher lr** In the hyper parameter search we usually set it on a log_range(1e-4, 1e-0)
+- **higher lr**: In the hyper parameter search we usually set it on a log_range(1e-4, 1e-0)
 - **weight decay**:
 	- Potentially much higher than usual, we usually search on a log_range(1e-5, 1e-0)
 	- _(already default)_ It's applied after the mask (so it affects the weights even for masked features)

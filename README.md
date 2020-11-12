@@ -1,6 +1,17 @@
 ### Learning explanations that are hard to vary
 This repo contains the code to implement the methods from the paper _Learning explanations that are hard to vary_ [arxiv.org/abs/2009.00329](https://arxiv.org/abs/2009.00329).
 
+#### Interested in trying it on a new dataset?
+In our experience, here are the very important hyperparameters to tune, that we would include in a wide hyperparameter search:
+
+- **higher lr** In the hyper parameter search we usually set it on a log_range(1e-4, 1e-0)
+- **weight decay**:
+	- Potentially much higher than usual, we usually search on a log_range(1e-5, 1e-0)
+	- _(already default)_ It's applied after the mask (so it affects the weights even for masked features)
+- **inverse scaling**: Rescales the remaining gradients by the ratio of entries that survived the mask in each layer. _(This is a pretty extreme re-scaling, we haven’t tried any other so far)_. We add `scale_grad_inverse_sparsity` as a boolean hyperparam in the search.
+- **geom mean**: in some cases (e.g. if there is some noise _and_ few environments, as it's the case for the notebook) the and_mask approximation is worse, and it’s best to go for the geom mean (the downside is that gradients get even smaller). We also just set this as an option in the hyperaparameter search (`method`).
+- **optimizer**: Adam or SGD. Adam rescales gradients, so the two can behave quite differently.
+
 #### Instructions
 To run the baseline (standard SGD), use `method='and_mask'` and `agreement_threshold=0.`.
 

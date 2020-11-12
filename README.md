@@ -11,9 +11,12 @@ In our experience, here are the very important hyperparameters to tune, that we 
 - **inverse scaling**: Rescales the remaining gradients by the ratio of entries that survived the mask in each layer. _(This is a pretty extreme re-scaling, we haven’t tried any other so far)_. We add `scale_grad_inverse_sparsity` as a boolean hyperparam in the search.
 - **geom mean**: in some cases (e.g. if there is some noise _and_ few environments, as it's the case for the notebook) the and_mask approximation is worse, and it’s best to go for the geom mean (the downside is that gradients get even smaller). We also just set this as an option in the hyperaparameter search (`method`).
 - **optimizer**: Adam or SGD. Adam rescales gradients, so the two can behave quite differently.
+- **agreement_threshold**: 1 might work best in some synthetic environments, but might be too strict for real life environments. Definitely search this too.
+
+Let us know what ends up working best, so hopefully over time we can make this list and ranges shorter =)
 
 #### Instructions
-To run the baseline (standard SGD), use `method='and_mask'` and `agreement_threshold=0.`.
+To run the baseline (standard SGD), use `method='and_mask'` and `agreement_threshold=0.`
 
 There are two examples:
 ### Synthetic dataset
